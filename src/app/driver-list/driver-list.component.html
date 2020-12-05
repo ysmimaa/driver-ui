@@ -1,0 +1,21 @@
+<h1>Driver list</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+            <td>ID</td>
+            <td>FIRSTNAME</td>
+            <td>LASTNAME</td>
+            <td>PHONE</td>
+            <td>HIRED DATE</td>
+        </thead>
+        <tbody *ngFor="let driver of drivers">
+            <td>{{driver.id}}</td>
+            <td>{{driver.firstname}}</td>
+            <td>{{driver.lastname}}</td>
+            <td>{{driver.phone}}</td>
+            <td>{{driver.contractType}}</td>
+            <td>{{driver.journey}}</td>
+            <td>{{driver.hiredDate | date | uppercase}}</td>
+        </tbody>
+    </table>
+</div>

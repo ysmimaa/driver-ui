@@ -1,0 +1,17 @@
+<div *ngIf="isValid">
+    {{errorMessage}}
+</div>
+<div>
+    <div>
+        Firstname : <input type="text" name="firstname" [(ngModel)]="firstname">
+    </div>
+    <div>
+        Lastname : <input type="text" name="lastname" [(ngModel)]="lastname">
+    </div>
+    <div>
+        Email : <input type="text" name="email" [(ngModel)]="email">
+    </div>
+    <div>
+        <button (click)="subscribe()">Submit</button>
+    </div>
+</div>
