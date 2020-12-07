@@ -8,16 +8,23 @@ import { DriverListComponent } from './driver-list/driver-list.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
+import { DriverDetailComponent } from './driver-detail/driver-detail.component';
+import { CreateDriverComponent } from './create-driver/create-driver.component';
 
 const routes: Routes = [
   {
     path: 'welcome/:username',
     component: WelcomeComponent,
-    canActivate:[RouteGuardService]
+    canActivate: [RouteGuardService]
   },
   {
     path: 'subscribe',
     component: SubscribeComponent,
+  },
+  {
+    path: 'driver-detail/:idUser',
+    component: DriverDetailComponent,
+    canActivate: [RouteGuardService]
   },
   {
     path: 'login',
@@ -26,12 +33,17 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
-    canActivate:[RouteGuardService]
+    canActivate: [RouteGuardService]
   },
   {
     path: 'driver-list',
     component: DriverListComponent,
-    canActivate:[RouteGuardService]
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: 'create',
+    component: CreateDriverComponent,
+    canActivate: [RouteGuardService]
   },
   {
     path: 'home',

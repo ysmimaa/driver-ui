@@ -21,11 +21,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.loginService.login(this.username, this.password)) {
+    this.loginService.handleLogin(this.username, this.password).subscribe(data => {
+      console.log(data);
       this.isValid = false;
       this.router.navigate(['welcome', this.username]);
-    } else {
-      this.isValid = true;
-    }
+    },
+      error => {
+        console.log(error)
+        this.isValid = true;
+      })
   }
 }

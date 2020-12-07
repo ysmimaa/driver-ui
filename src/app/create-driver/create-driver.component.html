@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Add new driver</h1>
+    <div *ngIf="dirverForm.dirty && dirverForm.invalid" class="alert alert-success" role="alert">
+        Form must be filled entirelly 
+    </div>
+    <div *ngIf="firstname.invalid" class="alert alert-success" role="alert">
+        Please provide me a valid firstname 
+    </div>
+    <div *ngIf="lastname.invalid" class="alert alert-success" role="alert">
+        Please provide me a valid lastname 
+    </div>
+    <div *ngIf="phone.invalid" class="alert alert-success" role="alert">
+        Please provide me a valid phone 
+    </div>
+    <div *ngIf="hiredDate.invalid" class="alert alert-success" role="alert">
+        Please provide me a valid hiredDate 
+    </div>
+    <form (ngSubmit)="!dirverForm.invalid && createDriver()" #dirverForm="ngForm">
+        <div class="form-group">
+            <label for="firstname">Firstname </label>
+            <input type="text" class="form-control" name="firstname" aria-describedby="firstnameHelp"
+                [(ngModel)]="driver.firstname" #firstname="ngModel" required="required">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname </label>
+            <input type="text" class="form-control" name="lastname" aria-describedby="lastnameHelp"
+                [(ngModel)]="driver.lastname" #lastname="ngModel" required="required">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone </label>
+            <input type="text" class="form-control" name="phone" aria-describedby="phoneHelp" [(ngModel)]="driver.phone"
+                required="required" #phone="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="contractType">ContractType</label>
+            <input type="text" class="form-control" name="contractType" [(ngModel)]="driver.contractType"
+                required="required">
+        </div>
+        <div class="form-group">
+            <label for="hiredDate">Hired date </label>
+            <input type="date" class="form-control" name="hiredDate" aria-describedby="hiredDateHelp"
+                [ngModel]="driver.hiredDate | date:'yyyy-MM-dd'" (ngModelChange)="driver.hiredDate = $event"
+                required="required" #hiredDate="ngModel">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

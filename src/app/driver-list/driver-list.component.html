@@ -1,3 +1,6 @@
+<div class="container">
+    <div *ngIf="deleteMessage" class="alert alert-danger" role="alert">{{deleteMessage}}</div>
+</div>
 <h1>Driver list</h1>
 <div class="container">
     <table class="table">
@@ -6,7 +9,10 @@
             <td>FIRSTNAME</td>
             <td>LASTNAME</td>
             <td>PHONE</td>
+            <td>CONTRACTTYPE</td>
             <td>HIRED DATE</td>
+            <td>ACT-DELETE</td>
+            <td>ACT-UPDATE</td>
         </thead>
         <tbody *ngFor="let driver of drivers">
             <td>{{driver.id}}</td>
@@ -14,8 +20,12 @@
             <td>{{driver.lastname}}</td>
             <td>{{driver.phone}}</td>
             <td>{{driver.contractType}}</td>
-            <td>{{driver.journey}}</td>
-            <td>{{driver.hiredDate | date | uppercase}}</td>
+            <td>{{driver.hiredDate | date:'yyyy-MM-dd'}}</td>
+            <td><button (click)="deleteDriver(driver.id)" class="btn btn-danger">delete</button></td>
+            <td><button class="btn btn-success" [routerLink]="['/driver-detail', driver.id]">edit</button></td>
         </tbody>
     </table>
+</div>
+<div class="container">
+    <button class="btn btn-success" routerLink="/create">New</button>
 </div>

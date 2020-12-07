@@ -1,16 +1,19 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateDriverComponent } from './create-driver/create-driver.component';
+import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DriverListComponent } from './driver-list/driver-list.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { InterceptersService } from './service/http/intercepters.service';
 import { LoginService } from './service/login.service';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -26,7 +29,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     LoginComponent,
     DriverListComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    DriverDetailComponent,
+    CreateDriverComponent
   ],
   imports: [
     FormsModule,
@@ -35,7 +40,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptersService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

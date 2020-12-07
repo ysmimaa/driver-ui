@@ -1,18 +1,19 @@
 <div class="container">
     <h1>Please Log in</h1>
-    <div *ngIf="isValid" class="alert alert-danger" role="alert">
+    <div *ngIf="loginForm.dirty && loginForm.invalid" class="alert alert-danger" role="alert">
         {{errorMessage}}
     </div>
-    <div>
+    <form (ngSubmit)="!loginForm.invalid && login()" #loginForm="ngForm">
         <div class="form-group">
             <label for="username">Username </label>
-            <input type="text" class="form-control" id="username" aria-describedby="usernameHelp"
-                [(ngModel)]="username">
+            <input type="text" class="form-control" name="username" aria-describedby="usernameHelp" [(ngModel)]="username"
+                required="required">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password">
+            <input type="password" class="form-control" name="exampleInputPassword1" [(ngModel)]="password"
+                required="required">
         </div>
-        <button (click)="login()" class="btn btn-primary">Submit</button>
-    </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> 
 </div>

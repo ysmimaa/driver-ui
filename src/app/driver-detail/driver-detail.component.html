@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Edit driver</h1>
+    <div *ngIf="updateMessage" class="alert alert-success" role="alert">
+        {{updateMessage}}
+    </div>
+    <form (ngSubmit)="!driverForm.invalid && updateDriver(driver)" #driverForm="ngForm">
+        <div class="form-group">
+            <label for="firstname">Firstname </label>
+            <input type="text" class="form-control" name="firstname" aria-describedby="firstnameHelp"
+                [(ngModel)]="driver.firstname">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname </label>
+            <input type="text" class="form-control" name="lastname" aria-describedby="lastnameHelp"
+                [(ngModel)]="driver.lastname">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone </label>
+            <input type="text" class="form-control" name="phone" aria-describedby="phoneHelp" [(ngModel)]="driver.phone">
+        </div>
+        <div class="form-group">
+            <label for="contractType">ContractType</label>
+            <input type="text" class="form-control" name="contractType" [(ngModel)]="driver.contractType">
+        </div>
+        <div class="form-group">
+            <label for="hiredDate">Hired date </label>
+            <input type="date" class="form-control" name="hiredDate" aria-describedby="hiredDateHelp"
+                [ngModel]="driver.hiredDate | date:'yyyy-MM-dd'"
+                (ngModelChange)="driver.hiredDate = $event">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

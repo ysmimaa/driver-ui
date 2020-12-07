@@ -9,9 +9,7 @@ import { LoginService } from '../service/login.service';
 export class NavBarComponent implements OnInit {
 
   isUserLoggedIn: boolean = false;
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService) { }
 
-  ngOnInit(): void {
-    this.isUserLoggedIn = this.loginService.userIsLogged();
-  }
+  ngOnInit(): void { }
 }

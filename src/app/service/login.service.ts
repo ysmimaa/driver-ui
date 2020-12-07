@@ -1,21 +1,14 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
-
-  login(username: string, passeword: string) {
-    console.log('Before user loggedin : ' + this.userIsLogged())
-    if (username !== "" && passeword !== "") {
-      sessionStorage.setItem('username', username);
-      console.log('After user loggedin : ' + this.userIsLogged())
-      return true;
-    }
-    return false;
-  }
+  constructor(private http: HttpClient) { }
 
   userIsLogged() {
     let user = sessionStorage.getItem('username');
@@ -25,5 +18,22 @@ export class LoginService {
   logout() {
     sessionStorage.removeItem('username');
   }
+
+  handleLogin(username, passeword) {
+    let basicAuthCredentials = 'Basic ' + window.btoa(username + ':' + passeword);
+    let headers = new HttpHeaders({
+      Authorisation: basicAuthCredentials
+    })
+    return this.http.get<boolean>(`http://localhost:8081/driver/api/basic-auth`, { headers }).pipe(
+      map(
+        data => {
+          sessionStorage.setItem('username', username);
+          return data;
+        }
+      )
+    );
+
+  }
+
 
 }
