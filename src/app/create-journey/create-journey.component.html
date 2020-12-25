@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Add a new journey</h1>
+  <div *ngIf="journeyForm.dirty && journeyForm.invalid" class="alert alert-success" role="alert">
+    Form must be filled entirely
+  </div>
+  <div *ngIf="startDate.invalid" class="alert alert-success" role="alert">
+    Please provide a valid start date
+  </div>
+  <div *ngIf="endDate.invalid" class="alert alert-success" role="alert">
+    Please provide a valid end date
+  </div>
+  <div *ngIf="nbrOfPlace.invalid" class="alert alert-success" role="alert">
+    Please provide a valid number of place
+  </div>
+
+  <form (ngSubmit)="!journeyForm.invalid && createJourney()" #journeyForm="ngForm">
+    <div class="form-group">
+      <label for="startDate">Start date</label>
+      <input type="date" class="form-control" name="startDate" aria-describedby="startDateHelp"
+             [ngModel]="journey.startAt" (ngModelChange)="journey.startAt = $event" #startDate="ngModel"
+             required="required">
+
+    </div>
+    <div class="form-group">
+      <label for="endDate">End date</label>
+      <input type="date" class="form-control" name="endDate" aria-describedby="endDateHelp"
+             [ngModel]="journey.endAt" (ngModelChange)="journey.endAt = $event" #endDate="ngModel"
+             required="required">
+    </div>
+    <div class="form-group">
+      <label for="nbrOfPlace">Number of place </label>
+      <input type="text" class="form-control" name="nbrOfPlace" aria-describedby="phoneHelp"
+             [(ngModel)]="journey.nbrOfPlaces"
+             required="required" #nbrOfPlace="ngModel">
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>

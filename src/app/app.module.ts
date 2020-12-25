@@ -13,10 +13,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { InterceptersService } from './service/http/intercepters.service';
-import { LoginService } from './service/login.service';
+import { InterceptersService } from './service/auth/http/intercepters.service';
+import { LoginService } from './service/auth/login.service';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { JourneyListComponent } from './journey-list/journey-list.component';
+import { CreateJourneyComponent } from './create-journey/create-journey.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HomeComponent,
     LogoutComponent,
     DriverDetailComponent,
-    CreateDriverComponent
+    CreateDriverComponent,
+    JourneyListComponent,
+    CreateJourneyComponent
   ],
   imports: [
     FormsModule,

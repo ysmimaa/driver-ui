@@ -20,7 +20,9 @@ export class DriverListComponent implements OnInit {
   }
 
   displayDrivers() {
-    this.driver.getDrivers().subscribe(response => {
+    this.driver.getDrivers().subscribe(
+      response => {
+      console.log(response);
       this.drivers = response;
     },
       error => this.handleError(error));

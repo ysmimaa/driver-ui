@@ -1,0 +1,27 @@
+<div *ngIf="journeyDeleteMsg" class="container">
+  <div class="alert alert-warning"> {{journeyDeleteMsg}}</div>
+</div>
+<h1>Journeys list</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+    <td>ID</td>
+    <td>START DATE</td>
+    <td>END DATE</td>
+    <td>NUMBER OF PLACE</td>
+    <td>ACT-DELETE</td>
+    <td>ACT-UPDATE</td>
+    </thead>
+    <tbody *ngFor="let journey of journeys">
+    <td>{{journey.id}}</td>
+    <td>{{journey.startAt | date: 'yyy-MM-dd'}}</td>
+    <td>{{journey.endAt | date: 'yyy-MM-dd'}}</td>
+    <td>{{journey.nbrOfPlaces}}</td>
+    <td><button class="btn btn-danger" (click)="deleteJourneyById(journey.id)">delete</button></td>
+    <td><button class="btn btn-success">edit</button></td>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <button class="btn btn-success" routerLink="/create-journey">New</button>
+</div>

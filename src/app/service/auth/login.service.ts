@@ -24,7 +24,7 @@ export class LoginService {
     let headers = new HttpHeaders({
       Authorisation: basicAuthCredentials
     })
-    return this.http.get<boolean>(`http://localhost:8081/driver/api/basic-auth`, { headers }).pipe(
+    return this.http.get<boolean>(`http://localhost:8000/api/user/basic-auth`).pipe(
       map(
         data => {
           sessionStorage.setItem('username', username);

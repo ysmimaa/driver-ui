@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Driver } from '../common/entities/Driver';
 import { DriverService } from '../service/data/driver.service';
+import {Address} from "../common/entities/Address";
 
 @Component({
   selector: 'app-create-driver',
@@ -17,7 +18,8 @@ export class CreateDriverComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit(): void {
-    this.driver = new Driver(null, "", null, null, null, null, null);
+    this.driver = new Driver(null, "", null,
+      new Address(null,null,null,null,null), null, null, null);
   }
 
   createDriver() {

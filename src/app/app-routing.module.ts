@@ -10,6 +10,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { CreateDriverComponent } from './create-driver/create-driver.component';
+import {JourneyListComponent} from "./journey-list/journey-list.component";
+import {CreateJourneyComponent} from "./create-journey/create-journey.component";
 
 const routes: Routes = [
   {
@@ -38,6 +40,16 @@ const routes: Routes = [
   {
     path: 'driver-list',
     component: DriverListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: 'journey-list',
+    component: JourneyListComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: 'create-journey',
+    component: CreateJourneyComponent,
     canActivate: [RouteGuardService]
   },
   {

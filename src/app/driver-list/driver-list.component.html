@@ -18,7 +18,7 @@
             <td>{{driver.id}}</td>
             <td>{{driver.firstname}}</td>
             <td>{{driver.lastname}}</td>
-            <td>{{driver.phone}}</td>
+            <td>{{driver.address.phone}}</td>
             <td>{{driver.contractType}}</td>
             <td>{{driver.hiredDate | date:'yyyy-MM-dd'}}</td>
             <td><button (click)="deleteDriver(driver.id)" class="btn btn-danger">delete</button></td>

@@ -1,42 +1,47 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Driver } from 'src/app/common/entities/Driver';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Driver} from 'src/app/common/entities/Driver';
+import {BASE_URL, DRIVER, DRIVERS} from "../../common/constants/driver";
+import {Address} from "../../common/entities/Address";
+
 @Injectable({
   providedIn: 'root'
 })
 export class DriverService {
 
-  BASE_URL: string = 'http://localhost:8081/driver/api/';
-
   driver: Driver;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getDrivers() {
     let headers = new HttpHeaders({
       Authorization: this.sendAuthenticate()
     });
-    return this.http.get<Driver[]>(this.BASE_URL + 'drivers', { headers });
+    return this.http.get<Driver[]>(BASE_URL + DRIVERS, {headers});
   }
 
   createDriver(driver: Driver) {
-    let d: Driver = new Driver(driver.id, driver.firstname, driver.lastname, driver.phone, driver.contractType, null, new Date(driver.hiredDate));
-    return this.http.post<Driver>(this.BASE_URL + 'create', d);
+    let d: Driver = new Driver(driver.id, driver.firstname, driver.lastname,
+      new Address(driver.address.phone, null, null, null, null), driver.contractType, null, new Date(driver.hiredDate));
+    return this.http.post<Driver>(BASE_URL + 'create', d);
   }
+
   updateDriver(driver: Driver) {
-    let d: Driver = new Driver(driver.id, driver.firstname, driver.lastname, driver.phone, driver.contractType, null, new Date(driver.hiredDate));
-    return this.http.put(this.BASE_URL + `update`, d);
+    let d: Driver = new Driver(driver.id, driver.firstname, driver.lastname,
+      new Address(driver.address.phone, null, null, null, null), driver.contractType, null, new Date(driver.hiredDate));
+    return this.http.put(BASE_URL + `update`, d);
   }
 
   findDriverById(id) {
     let headers = new HttpHeaders({
       Authorization: this.sendAuthenticate()
     });
-    return this.http.get<Driver>(this.BASE_URL + `${id}`, { headers });
+    return this.http.get<Driver>(BASE_URL + DRIVER + `${id}`, /*{ headers }*/);
   }
 
   deleteDriver(id) {
-    return this.http.delete(this.BASE_URL + `${id}`);
+    return this.http.delete(BASE_URL + DRIVER + `${id}`);
   }
 
   sendAuthenticate() {
