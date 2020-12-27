@@ -9,6 +9,7 @@
     <td>START DATE</td>
     <td>END DATE</td>
     <td>NUMBER OF PLACE</td>
+    <td>STATUS</td>
     <td>ACT-DELETE</td>
     <td>ACT-UPDATE</td>
     </thead>
@@ -17,8 +18,9 @@
     <td>{{journey.startAt | date: 'yyy-MM-dd'}}</td>
     <td>{{journey.endAt | date: 'yyy-MM-dd'}}</td>
     <td>{{journey.nbrOfPlaces}}</td>
-    <td><button class="btn btn-danger" (click)="deleteJourneyById(journey.id)">delete</button></td>
-    <td><button class="btn btn-success">edit</button></td>
+    <td><span class="badge badge-pill badge-info" *ngIf="checkAvailability(journey.driverId)">{{availability}}</span></td>
+    <td><span class="badge badge-pill badge-danger" (click)="deleteJourneyById(journey.id)">delete</span></td>
+    <td><span class="badge badge-pill badge-success" [routerLink]="['/detail-journey',journey.id]">update</span></td>
     </tbody>
   </table>
 </div>

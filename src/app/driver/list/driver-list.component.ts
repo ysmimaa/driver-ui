@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { error } from 'protractor';
-import { Driver } from '../common/entities/Driver';
-import { DriverService } from '../service/data/driver.service';
+import { Driver } from '../../common/entities/Driver';
+import { DriverService } from '../../service/data/driver.service';
 
 @Component({
   selector: 'app-driver-list',

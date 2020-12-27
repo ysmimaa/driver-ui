@@ -19,8 +19,8 @@ export class LoginService {
     sessionStorage.removeItem('username');
   }
 
-  handleLogin(username, passeword) {
-    let basicAuthCredentials = 'Basic ' + window.btoa(username + ':' + passeword);
+  handleLogin(username, password) {
+    let basicAuthCredentials = 'Basic ' + window.btoa(username + ':' + password);
     let headers = new HttpHeaders({
       Authorisation: basicAuthCredentials
     })
@@ -29,8 +29,7 @@ export class LoginService {
         data => {
           sessionStorage.setItem('username', username);
           return data;
-        }
-      )
+        })
     );
 
   }

@@ -5,9 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateDriverComponent } from './create-driver/create-driver.component';
-import { DriverDetailComponent } from './driver-detail/driver-detail.component';
-import { DriverListComponent } from './driver-list/driver-list.component';
+import { CreateDriverComponent } from './driver/create/create-driver.component';
+import { DriverDetailComponent } from './driver/detail/driver-detail.component';
+import { DriverListComponent } from './driver/list/driver-list.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -17,8 +17,9 @@ import { InterceptersService } from './service/auth/http/intercepters.service';
 import { LoginService } from './service/auth/login.service';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { JourneyListComponent } from './journey-list/journey-list.component';
-import { CreateJourneyComponent } from './create-journey/create-journey.component';
+import { JourneyListComponent } from './journey/list/journey-list.component';
+import { CreateJourneyComponent } from './journey/create/create-journey.component';
+import { JourneyDetailComponent } from './journey/detail/journey-detail.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CreateJourneyComponent } from './create-journey/create-journey.componen
     DriverDetailComponent,
     CreateDriverComponent,
     JourneyListComponent,
-    CreateJourneyComponent
+    CreateJourneyComponent,
+    JourneyDetailComponent
   ],
   imports: [
     FormsModule,

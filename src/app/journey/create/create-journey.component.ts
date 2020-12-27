@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Journey} from "../common/entities/Journey";
-import {JourneyService} from "../service/data/journey.service";
+import {Journey} from "../../common/entities/Journey";
+import {JourneyService} from "../../service/data/journey.service";
 import {Router} from "@angular/router";
 
 @Component({

@@ -4,14 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { LoginComponent } from './login/login.component';
-import { DriverListComponent } from './driver-list/driver-list.component';
+import { DriverListComponent } from './driver/list/driver-list.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
-import { DriverDetailComponent } from './driver-detail/driver-detail.component';
-import { CreateDriverComponent } from './create-driver/create-driver.component';
-import {JourneyListComponent} from "./journey-list/journey-list.component";
-import {CreateJourneyComponent} from "./create-journey/create-journey.component";
+import { DriverDetailComponent } from './driver/detail/driver-detail.component';
+import { CreateDriverComponent } from './driver/create/create-driver.component';
+import {JourneyListComponent} from "./journey/list/journey-list.component";
+import {CreateJourneyComponent} from "./journey/create/create-journey.component";
+import {JourneyDetailComponent} from "./journey/detail/journey-detail.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'create-journey',
     component: CreateJourneyComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: 'detail-journey/:idJourney',
+    component: JourneyDetailComponent,
     canActivate: [RouteGuardService]
   },
   {
